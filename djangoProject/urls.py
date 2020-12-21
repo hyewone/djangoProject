@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from djangoProject.back.comm import views
+from djangoProject.back.stock import communication
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
+    #
     path('index/', views.indexHtml),
+    path('stock/test', communication.test),
 ]
