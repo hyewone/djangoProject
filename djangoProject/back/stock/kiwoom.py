@@ -1,8 +1,10 @@
+from django.http import HttpResponse
+from django.shortcuts import render
 import sys
 from PyQt5.QtWidgets import QApplication
 from kiwoom_api.api import Kiwoom, DataFeeder
 
-if __name__ == "__main__":
+def test(request):
 
     app = QApplication(sys.argv)
 
@@ -37,3 +39,4 @@ if __name__ == "__main__":
     data = feeder.request(**params)
     """
     print("데이터 ::: " + str(data))
+    return render(request, 'test2.html', {'data': data })
