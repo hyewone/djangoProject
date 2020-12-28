@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from djangoProject.back.comm import views
-from djangoProject.back.stock import creon,kiwoom
+from djangoProject.back.stock import creon, kiwoom
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +24,7 @@ urlpatterns = [
     #
     path('index/', views.indexHtml),
     path('stock/creon', creon.test),
+    path('stock/creonRest', creon.test2),
     path('stock/kiwoom', kiwoom.test),
+    path('stock/kiwoomRest', kiwoom.test2),
 ]

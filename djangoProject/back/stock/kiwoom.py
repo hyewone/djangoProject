@@ -3,6 +3,7 @@ from django.shortcuts import render
 import sys
 from PyQt5.QtWidgets import QApplication
 from kiwoom_api.api import Kiwoom, DataFeeder
+from django.http import JsonResponse
 
 def test(request):
 
@@ -40,3 +41,19 @@ def test(request):
     """
     print("데이터 ::: " + str(data))
     return render(request, 'test2.html', {'data': data })
+
+def test2(request):
+    app = QApplication(sys.argv)
+
+    kiwoom = Kiwoom()  # Kiwoom 인스턴스 생성
+    kiwoom.commConnect()  # API 접속
+    feeder = DataFeeder(kiwoom)
+
+    code = "005930"  # 삼성전자
+
+    # TR요청(request)에 필요한 parameter는 KOAStudio를 참고하시길 바랍니다.
+    # OPT10004: 주식호가요청
+    params = {"종목코드": code}
+    data = feeder.request(trCode="OPT10004", **params)
+
+    return JsonResponse(data)

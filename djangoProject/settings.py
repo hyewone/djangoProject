@@ -25,7 +25,7 @@ SECRET_KEY = 'gq()!jvlnfr2gs(f#1rflsos199eo__o$qb%=+eiv%3zxovj-2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -47,7 +48,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = ['https://template-kkqo.run.goorm.io'
+                         ,'https://templatetest01.netlify.app']
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'djangoProject.urls'
 
@@ -83,7 +90,7 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/3.1/ref/settiCORS_ORIGIN_WHITELIST ngs/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
